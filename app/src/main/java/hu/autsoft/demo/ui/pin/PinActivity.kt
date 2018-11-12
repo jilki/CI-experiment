@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import hu.autsoft.demo.ClientPinValidator
 import hu.autsoft.demo.Injection
 import hu.autsoft.demo.MainActivity
-import hu.autsoft.demo.R
+import hu.autsoft.hwsw.demo.pin.zsolt.R
 import kotlinx.android.synthetic.main.activity_pin.*
 import kotlinx.android.synthetic.main.content_pin.*
 
@@ -20,8 +20,8 @@ class PinActivity : AppCompatActivity(), PinView {
         setSupportActionBar(toolbar)
 
         pinPresenter = PinPresenter(
-            ClientPinValidator(),
-            Injection.provideValidatorApi()
+                ClientPinValidator(),
+                Injection.provideValidatorApi()
         )
         pinPresenter.attachView(this)
 

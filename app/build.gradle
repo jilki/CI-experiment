@@ -7,15 +7,30 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "hu.autsoft.demo"
+        applicationId "hu.autsoft.hwsw.demo.pin.zsolt"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
+    signingConfigs {
+        debug {
+            storeFile file("../assets/debug.keystore")
+        }
         release {
+            storeFile file("../assets/release.keystore")
+            storePassword "tpp1234"
+            keyAlias "ThePinProject"
+            keyPassword "tpp1234"
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
